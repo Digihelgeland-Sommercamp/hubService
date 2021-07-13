@@ -1,5 +1,4 @@
-from flask import Flask, request
-import json
+from flask import Flask, request, jsonify
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
 import waitress
 
@@ -25,10 +24,10 @@ def submit_application():
 def get_application(saksnummer=None):
     fetch_application = FetchApplication(saksnummer)
     res = fetch_application.fetch_application_from_expose_user()
+    del fetch_application
     if res == None:
         raise BadRequest
-    del fetch_application
-    return res
+    return jsonify(res)
 
 
 
