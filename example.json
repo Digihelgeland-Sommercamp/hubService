@@ -1,0 +1,99 @@
+{
+    "bostedsadresse": {
+        "adresseIdentifikatorFraMatrikkelen": null,
+        "skolekrets": null,
+        "ukjentBosted": null,
+        "vegadresse": {
+            "adressekode": "1124",
+            "adressenavn": "Grovfjordveien",
+            "adressenummer": {
+                "husbokstav": null,
+                "husnummer": "1629"
+            },
+            "adressetilleggsnavn": null,
+            "bruksenhetsnummer": null,
+            "bruksenhetstype": null,
+            "coAdressenavn": null,
+            "kommunenummer": "5412",
+            "poststed": {
+                "postnummer": "9446",
+                "poststedsnavn": "GROVFJORD"
+            }
+        }
+    },
+    "deltBosted": null,
+    "familierelasjon": [
+        {
+            "minRolleForPerson": "barn",
+            "relatertPerson": "31907096060",
+            "relatertPersonsRolle": "mor"
+        },
+        {
+            "minRolleForPerson": "barn",
+            "relatertPerson": "19896896507",
+            "relatertPersonsRolle": "far"
+        },
+        {
+            "minRolleForPerson": "ektefelleEllerPartner",
+            "relatertPerson": "26919398832",
+            "relatertPersonsRolle": "ektefelleEllerPartner"
+        },
+        {
+            "minRolleForPerson": "far",
+            "relatertPerson": "22911799042",
+            "relatertPersonsRolle": "barn"
+        }
+    ],
+    "foedsel": {
+        "foedselsaar": "1995",
+        "foedselsdato": "1995-07-11"
+    },
+    "foreldreansvar": [
+        {
+            "ansvar": "felles",
+            "ansvarlig": "11879597511",
+            "ansvarligUtenIdentifikator": null,
+            "ansvarssubjekt": "22911799042",
+            "ansvarssubjektUtenIdentifikator": null
+        }
+    ],
+    "identifikasjonsnummer": {
+        "foedselsEllerDNummer": "11879597511",
+        "identifikatortype": "foedselsnummer"
+    },
+    "navn": {
+        "etternavn": "BOTANIKK",
+        "forkortetNavn": "BOTANIKK USELVISK",
+        "fornavn": "USELVISK",
+        "mellomnavn": null,
+        "originaltNavn": null
+    },
+    "postadresse": {
+        "postadresseIFrittFormat": {
+            "adresselinje": [
+                "Ullern G\u00c3\u00a5rds vei",
+                "0382 OSLO",
+                "Norge"
+            ],
+            "poststed": null
+        },
+        "postboksadresse": null,
+        "vegadresse": null
+    },
+    "preferertKontaktadresse": {
+        "kontaktadresseIFrittFormat": {
+            "adresselinje": [
+                "Ullern G\u00c3\u00a5rds vei",
+                "0382 OSLO",
+                "Norge"
+            ],
+            "landkode": null
+        },
+        "valg": "postadresse"
+    },
+    "sivilstand": {
+        "gyldighetstidspunkt": "2017-11-20T00:00:00Z",
+        "sivilstand": "gift",
+        "sivilstandsdato": "2017-11-20"
+    }
+}
