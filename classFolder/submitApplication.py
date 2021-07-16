@@ -42,10 +42,13 @@ class SubmitApplication():
         #summer inntekt
         self.application.samlet_inntekt = self.sum_nettoinntekt(applicant_skattemelding, cohabitant_skattemelding)
         
+        #spør evaluator
+        res = self.evaluate_income(self.application.samlet_inntekt)
+        self.application.gratis_kjernetid = res['freeHours']
+        self.application.maks_aarlig_bhg_kostnad = res['maxPay']
 
-        #TODO: Vurder om søknad er konklusiv, automatisk godkjenning
-
-        
+        #lagre søknad
+        self.save_application()
 
         return True #if successful operation
 
@@ -71,6 +74,9 @@ class SubmitApplication():
         if cohabitant_skattemelding is not None:
             res += int(cohabitant_skattemelding["nettoinntekt"]) + int(cohabitant_skattemelding["svalbardNettoinntekt"])
         return res
+
+    def evaluate_income(self, income):
+        return json.loads(self.contacter.evaluate_yearly_income(income))
 
 
 

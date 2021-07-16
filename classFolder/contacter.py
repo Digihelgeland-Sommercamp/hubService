@@ -1,11 +1,12 @@
 import requests
 from secrets import token_urlsafe
+import json
 
 class Contacter():
     def __init__(self):
         self.skatteserviceURL = "http://localhost:5000/"
         self.folkregserviceURL = "http://localhost:8080/"
-        self.evaluatorserviceURL = "http://localhost:8000"
+        self.evaluatorserviceURL = "http://localhost:8000/"
 
     def get_skattemelding(self, inntektsaar, personidentifikator):
         r = requests.get(self.skatteserviceURL + "get_skattemelding/" + str(inntektsaar) + "/" + str(personidentifikator))
@@ -25,7 +26,10 @@ class Contacter():
             "userId": userId,
             "income": income,
             "incomeType": "Skatt",
-            "monthlyIncome": [],
-            "household": []
+            "monthlyIncome": [
+            ],
+            "household": [
+            ]
         }
-        r = requests
+        r = requests.get(self.evaluatorserviceURL + "evaluate", data=data)
+        return r.text

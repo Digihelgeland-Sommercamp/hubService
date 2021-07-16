@@ -60,6 +60,7 @@ class Application():
         self.postadresse = folkreg_data['postadresse']
         self.preferert_kontaktadresse = folkreg_data['preferertKontaktadresse']
 
+    
 
 #eksempelbruk av application-metoder
 if __name__ == '__main__':
