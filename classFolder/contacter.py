@@ -31,5 +31,6 @@ class Contacter():
             "household": [
             ]
         }
-        r = requests.get(self.evaluatorserviceURL + "evaluate", data=data)
+        r = requests.get(self.evaluatorserviceURL + "evaluate", json=json.dumps(data))
         return r.text
+
