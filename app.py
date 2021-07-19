@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
 import waitress
 
-from classFolder import Application, FetchApplication, SubmitApplication
+from classFolder.application import Application
+from classFolder.fetchApplication import FetchApplication
+from classFolder.submitApplication import SubmitApplication
 
 app = Flask(__name__)
 
