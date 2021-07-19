@@ -40,5 +40,5 @@ class Contacter():
         if r.status_code != 200:
             raise Exception("Could not evaluate yearly income. Response: " + str(r))
 
-        return r.json()
+        return r.text
 
