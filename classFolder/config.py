@@ -1,0 +1,8 @@
+hostname_fregservice="http://fregservice"
+hostname_skattservice="http://skattservice"
+hostname_evaluatorservice="http://evaluatorservice"
+hostname_exposedataservice="http://"
+port_fregservice=":5000"
+port_skattservice=":5000"
+port_evaluatorservice=":5000"
+port_exposedataservice=":5000"

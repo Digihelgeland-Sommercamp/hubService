@@ -1,12 +1,13 @@
 import requests
 from secrets import token_urlsafe
 import json
+import config
 
 class Contacter():
     def __init__(self):
-        self.skatteserviceURL = "http://localhost:5000/"
-        self.folkregserviceURL = "http://localhost:8080/"
-        self.evaluatorserviceURL = "http://localhost:8000/"
+        self.skatteserviceURL = config.hostname_skattservice+config.port_skattservice+'/'
+        self.folkregserviceURL = config.hostname_fregservice+config.port_fregservice+'/'
+        self.evaluatorserviceURL = config.hostname_evaluatorservice+config.port_evaluatorservice+'/'
 
     def get_skattemelding(self, inntektsaar, personidentifikator):
         r = requests.get(self.skatteserviceURL + "get_skattemelding/" + str(inntektsaar) + "/" + str(personidentifikator))
