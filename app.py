@@ -16,7 +16,7 @@ def root():
 
 @app.route("/submit_application", methods=["POST"])
 def submit_application():
-    sub_application = SubmitApplication(request.data)
+    sub_application = SubmitApplication(request.get_json())
     res = sub_application.handle_application()
     del sub_application
     if not res:

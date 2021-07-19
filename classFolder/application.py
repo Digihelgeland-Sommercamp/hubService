@@ -1,11 +1,16 @@
 from flask import jsonify
 from datetime import date
 import json
+from werkzeug.exceptions import BadRequest
+import requests
 
 
 
 class Application():
     def __init__(self, application_data):
+        if not isinstance(application_data, dict):
+            raise BadRequest
+
         self.saksnummer = application_data['saksnummer']
         self.status = application_data['status']
         self.identifikasjonsnummer = application_data['identifikasjonsnummer']
