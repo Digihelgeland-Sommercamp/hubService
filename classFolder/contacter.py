@@ -38,7 +38,7 @@ class Contacter():
         }
         r = requests.get(self.evaluatorserviceURL + "evaluate", json=json.dumps(data))
         if r.status_code != 200:
-            raise Exception("Status code: " + str(r.status_code))
+            raise Exception("Could not evaluate yearly income. Response: " + str(r))
 
         return r.json()
 
