@@ -28,9 +28,9 @@ class SubmitApplication():
             # applicant_skattemelding = self.get_skattemelding("2019", self.application.get_idnummer())
             applicant_skattemelding = self.get_skattemelding("2019", "03839199405")
 
-        except Exception:
+        except Exception as e:
             self.aborted_save_application()
-            raise Exception('Obtaining applicant skattemelding failed')
+            raise Exception(e)
         
         #hent samboer sin skattemelding
         cohabitant_skattemelding = None
