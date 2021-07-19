@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: hubservice
-        image: johannesdigdir/hub_service:55f9f2b1483f9c61a3106a9087eced3edcbab19d
+        image: johannesdigdir/hub_service:208a3c800f464dbceac6cc2a101119485654577a
         ports:
         - containerPort: 5000

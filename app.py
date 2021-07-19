@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from requests.models import Response
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
 import waitress
 
@@ -21,6 +22,7 @@ def submit_application():
     del sub_application
     if not res:
         raise InternalServerError
+    return Response("Success", 200)
 
 @app.route("/get_application/<saksnummer>")
 def get_application(saksnummer=None):
