@@ -25,7 +25,9 @@ class SubmitApplication():
         #hent søkers skattemelding
         applicant_skattemelding = None
         try:
-            applicant_skattemelding = self.get_skattemelding("2019", self.application.get_idnummer())
+            # applicant_skattemelding = self.get_skattemelding("2019", self.application.get_idnummer())
+            applicant_skattemelding = self.get_skattemelding("2019", "03839199405")
+
         except Exception:
             self.aborted_save_application()
             raise Exception('Obtaining applicant skattemelding failed')
