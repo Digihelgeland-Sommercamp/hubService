@@ -22,7 +22,7 @@ def submit_application():
     del sub_application
     if not res:
         raise InternalServerError
-    return Response("Success", 200)
+    return "Success"
 
 @app.route("/get_application/<saksnummer>")
 def get_application(saksnummer=None):
