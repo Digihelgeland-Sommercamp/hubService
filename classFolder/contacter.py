@@ -37,5 +37,5 @@ class Contacter():
             ]
         }
         r = requests.get(self.evaluatorserviceURL + "evaluate", json=json.dumps(data))
-        return r.text
+        return r.json
 
