@@ -1,5 +1,5 @@
 hostname_fregservice="http://fregservice"
-hostname_skattservice="http://skatteservice"
+hostname_skattservice="http://skatteservice-svc"
 hostname_evaluatorservice="http://evaluatorservice"
 hostname_exposedataservice="http://"
 port_fregservice=":5000"
