@@ -12,7 +12,7 @@ class Contacter():
     def get_skattemelding(self, inntektsaar, personidentifikator):
         url = self.skatteserviceURL + "get_skattemelding/" + str(inntektsaar) + "/" + str(personidentifikator)
         print("ASJKDASDKJASD URL: "+url)
-        return
+        
         r = requests.get(url)
         print(r.status_code)
         if r.status_code != 200:

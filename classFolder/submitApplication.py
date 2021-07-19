@@ -18,9 +18,9 @@ class SubmitApplication():
         try:
             folkreg_data = self.get_folkreg_data(self.application.get_idnummer())
             self.application.update_folkreg_data(folkreg_data)
-        except Exception:
+        except Exception as e:
             self.aborted_save_application()
-            raise Exception('Obtaining folkreg_data failed')
+            raise Exception(e)
 
         #hent søkers skattemelding
         applicant_skattemelding = None
