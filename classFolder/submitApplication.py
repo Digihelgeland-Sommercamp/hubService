@@ -82,11 +82,11 @@ class SubmitApplication():
 
 
 
-#eksempelbruk av submitapplication-metoder
-if __name__ == '__main__':
-    f = open('application_example.json',)
-    application_data = json.load(f)
-    f.close()
+# #eksempelbruk av submitapplication-metoder
+# if __name__ == '__main__':
+#     f = open('application_example.json',)
+#     application_data = json.load(f)
+#     f.close()
 
-    app = SubmitApplication(application_data)
-    print(app.handle_application())
+#     app = SubmitApplication(application_data)
+#     print(app.handle_application())

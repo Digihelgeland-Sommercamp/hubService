@@ -1,7 +1,7 @@
 import requests
 from secrets import token_urlsafe
 import json
-import config
+from classFolder import config
 
 class Contacter():
     def __init__(self):
