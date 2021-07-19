@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hubservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hubservice
+  template:
+    metadata:
+      labels:
+        app: hubservice
+    spec:
+      containers:
+      - name: hubservice
+        image: johannesdigdir/hub_service:7910e101a2dd086407128eea6698720dddf1fe7e
+        ports:
+        - containerPort: 5000

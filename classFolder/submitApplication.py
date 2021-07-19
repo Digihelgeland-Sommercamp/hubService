@@ -1,5 +1,5 @@
-from application import Application
-from contacter import Contacter
+from classFolder.application import Application
+from classFolder.contacter import Contacter
 import json
 
 
