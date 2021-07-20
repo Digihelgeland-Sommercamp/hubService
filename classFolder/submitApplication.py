@@ -55,15 +55,11 @@ class SubmitApplication():
         return True #if successful operation
 
     def save_application(self):
-        #TODO: 
-        #Kontakt intern databaseservice, og lagre søknad
-        pass
+        self.contacter.save_application(self.application.export_as_json())
 
     def aborted_save_application(self):
-        #TODO:
-        #Sett requires_manual_processing i application til true,
-        #lagre søknad i intern database
-        pass
+        self.application.requires_manual_processing = True
+        self.contacter.save_application(self.application.export_as_json())
 
     def get_skattemelding(self, inntektsaar, personidentifikator):
         return json.loads(self.contacter.get_skattemelding(inntektsaar, personidentifikator))
