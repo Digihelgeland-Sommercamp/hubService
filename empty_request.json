@@ -1,0 +1,89 @@
+{
+    "saksnummer": null,
+    "status": null,
+    "status_historikk": [],
+    "navn": {
+        "etternavn": null,
+        "forkortetNavn": null,
+        "fornavn": null,
+        "mellomnavn": null,
+        "originaltNavn": null
+    },
+    "identifikasjonsnummer": {
+        "foedselsEllerDNummer": "03839199405",
+        "identifikatortype": "foedselsnummer"
+    },
+    "sivilstand": {
+        "gyldighetstidspunkt": null,
+        "sivilstand": null,
+        "sivilstandsdato": null,
+        "har_samboer": null,
+        "samboer_fra_dato": null,
+        "relatert_person": null
+    },
+    "bostedsadresse": {
+        "adresseIdentifikatorFraMatrikkelen": null,
+        "skolekrets": null,
+        "ukjentBosted": null,
+        "vegadresse": {
+            "adressekode": null,
+            "adressenavn": null,
+            "adressenummer": {
+                "husbokstav": null,
+                "husnummer": null
+            },
+            "adressetilleggsnavn": null,
+            "bruksenhetsnummer": null,
+            "bruksenhetstype": null,
+            "coAdressenavn": null,
+            "kommunenummer": null,
+            "poststed": {
+
+            }
+        }
+    },
+    "preferertKontaktadresse": {
+        "kontaktadresseIFrittFormat": {
+            "adresselinje": [
+
+            ],
+            "landkode": null
+        },
+        "valg": null
+    },
+    "foedsel": {
+
+    },
+    "postadresse": {
+        "postadresseIFrittFormat": {
+            "adresselinje": [
+
+            ],
+            "poststed": null
+        },
+        "postboksadresse": null,
+        "vegadresse": null
+    },
+    "foreldreansvar": [
+        {
+
+        }
+    ],
+    "opplysninger_om_barn_barnehage": [
+        {
+
+        }
+    ],
+    "opplysninger_om_barn_SFO": [],
+    "familierelasjon": [
+
+    ],
+    "samlet_inntekt": 0,
+    "gratis_kjernetid": null,
+    "maks_aarlig_bhg_kostnad": null,
+    "flagg": {
+        "varig_nedgang_samlet_inntekt": false,
+        "mistet_jobb": false,
+        "samlivsbrudd": false
+    }
+}
