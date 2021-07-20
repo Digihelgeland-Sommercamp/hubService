@@ -3,31 +3,33 @@ from datetime import date
 import json
 from werkzeug.exceptions import BadRequest
 import requests
+import copy
 
 
 
 class Application():
-    def __init__(self, application_data):
-        if not isinstance(application_data, dict):
+    def __init__(self, incoming_application_data):
+        if not isinstance(incoming_application_data, dict):
             raise BadRequest
+        self.application_data = copy.deepcopy(incoming_application_data)
 
-        self.saksnummer = application_data['saksnummer']
-        self.status = application_data['status']
-        self.identifikasjonsnummer = application_data['identifikasjonsnummer']
-        self.navn = application_data['navn']
-        self.barn_barnehage = application_data['opplysninger_om_barn_barnehage']
-        self.barn_SFO = application_data['opplysninger_om_barn_SFO']
-        self.sivilstand = application_data['sivilstand']
-        self.bostedsadresse = application_data['bostedsadresse']
-        self.preferert_kontaktadresse = application_data['preferertKontaktadresse']
-        self.foedsel = application_data['foedsel']
-        self.postadresse = application_data['postadresse']
-        self.samlet_inntekt = application_data['samlet_inntekt']
-        self.gratis_kjernetid = application_data['gratis_kjernetid']
-        self.maks_aarlig_bhg_kostnad = application_data['maks_aarlig_bhg_kostnad']
-        self.flagg = application_data['flagg']
-        self.foreldreansvar = application_data['foreldreansvar']
-        self.familierelasjon = application_data['familierelasjon']
+        self.saksnummer = self.application_data['saksnummer']
+        self.status = self.application_data['status']
+        self.identifikasjonsnummer = self.application_data['identifikasjonsnummer']
+        self.navn = self.application_data['navn']
+        self.barn_barnehage = self.application_data['opplysninger_om_barn_barnehage']
+        self.barn_SFO = self.application_data['opplysninger_om_barn_SFO']
+        self.sivilstand = self.application_data['sivilstand']
+        self.bostedsadresse = self.application_data['bostedsadresse']
+        self.preferert_kontaktadresse = self.application_data['preferertKontaktadresse']
+        self.foedsel = self.application_data['foedsel']
+        self.postadresse = self.application_data['postadresse']
+        self.samlet_inntekt = self.application_data['samlet_inntekt']
+        self.gratis_kjernetid = self.application_data['gratis_kjernetid']
+        self.maks_aarlig_bhg_kostnad = self.application_data['maks_aarlig_bhg_kostnad']
+        self.flagg = self.application_data['flagg']
+        self.foreldreansvar = self.application_data['foreldreansvar']
+        self.familierelasjon = self.application_data['familierelasjon']
         self.requires_manual_processing = False
 
     #Sjekker flagg i søknad, dersom noen flagg er true
