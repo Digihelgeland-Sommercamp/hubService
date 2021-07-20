@@ -21,9 +21,9 @@ class Contacter():
     def get_folkreg_data(self, personidentifikator):
         r = requests.get(self.folkregserviceURL + "person/" + str(personidentifikator))
         if r.status_code != 200:
-            raise Exception('get_folkreg_data request response is not 200. Response: ' + str(r))
+            raise Exception('get_folkreg_data request response is not 200. Status code: ' + str(r.status_code) + ', Reason: ' + str(r.reason))
         return r.text
-
+        
     def evaluate_yearly_income(self, income):
         userId = token_urlsafe()
         data = {
