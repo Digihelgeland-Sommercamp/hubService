@@ -36,3 +36,11 @@ class FetchChildren():
 
     def _get_folkreg_data(self, personidentifikator):
         return json.loads(Contacter().get_folkreg_data(personidentifikator))
+
+    def _get_child_from_folkreg(self, personidentifikator):
+        child_from_folkreg = json.loads(Contacter().get_folkreg_data(personidentifikator))
+
+        child = {}
+        child["navn"] = child_from_folkreg["navn"]
+        
+        return child
