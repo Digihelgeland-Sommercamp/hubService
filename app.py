@@ -45,7 +45,6 @@ def get_children(personidentifikator):
 #TODO: route get partner til frontend
 
 
-
 if __name__ == '__main__':
     from waitress import serve
     serve(app, host='0.0.0.0', port=5000)
