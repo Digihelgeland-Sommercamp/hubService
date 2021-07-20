@@ -66,6 +66,7 @@ class Application():
         self.foreldreansvar = folkreg_data['foreldreansvar']
         self.postadresse = folkreg_data['postadresse']
         self.preferert_kontaktadresse = folkreg_data['preferertKontaktadresse']
+        self.foedsel = folkreg_data['foedsel']
 
     
 

@@ -33,6 +33,10 @@ def get_application(saksnummer=None):
         raise BadRequest
     return jsonify(res)
 
+#TODO: route Get related children til frontend
+
+#TODO: route get partner til frontend
+
 
 
 if __name__ == '__main__':
