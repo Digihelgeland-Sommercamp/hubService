@@ -20,7 +20,7 @@ class FetchChildren():
         child_index = 0
         for i in range(len(relations)):
             if relations[i]["relatertPersonsRolle"] == "barn":
-                related_children[child_index] = relations[i]
+                related_children[child_index] = self._get_child_from_folkreg(relations[i]["relatertPerson"])
                 child_index += 1
         
         return related_children
@@ -35,3 +35,11 @@ class FetchChildren():
 
     def _get_folkreg_data(self, personidentifikator):
         return json.loads(Contacter().get_folkreg_data(personidentifikator))
+
+    def _get_child_from_folkreg(self, personidentifikator):
+        child_from_folkreg = json.loads(Contacter().get_folkreg_data(personidentifikator))
+
+        child = {}
+        child["navn"] = child_from_folkreg["navn"]
+        
+        return child
