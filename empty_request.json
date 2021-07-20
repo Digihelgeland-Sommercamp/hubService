@@ -71,10 +71,20 @@
     ],
     "opplysninger_om_barn_barnehage": [
         {
-
+            "barnets_navn": null,
+            "fodselsnummer": null,
+            "navn_pa_barnehage": null,
+            "prosent_plass": null
         }
     ],
-    "opplysninger_om_barn_SFO": [],
+    "opplysninger_om_barn_SFO": [
+        {
+            "barnets_navn": null,
+            "fodselsnummer": null,
+            "navn_pa_barnehage": null,
+            "prosent_plass": null
+        }
+    ],
     "familierelasjon": [
 
     ],
