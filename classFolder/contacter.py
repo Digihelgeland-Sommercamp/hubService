@@ -15,13 +15,13 @@ class Contacter():
         
         r = requests.get(url)
         if r.status_code != 200:
-            raise Exception('get_skattemelding request response is not 200')
+            raise Exception('get_skattemelding request response is not 200. Status code: ' + str(r.status_code))
         return r.text
 
     def get_folkreg_data(self, personidentifikator):
         r = requests.get(self.folkregserviceURL + "person/" + str(personidentifikator))
         if r.status_code != 200:
-            raise Exception('get_folkreg_data request response is not 200')
+            raise Exception('get_folkreg_data request response is not 200. Status code: ' + str(r.status_code))
         return r.text
 
     def evaluate_yearly_income(self, income):
