@@ -7,6 +7,7 @@ from classFolder.application import Application
 from classFolder.fetchApplication import FetchApplication
 from classFolder.submitApplication import SubmitApplication
 from classFolder.fetchChildren import FetchChildren
+from classFolder.fetchPartner import FetchPartner
 
 app = Flask(__name__)
 
@@ -14,7 +15,6 @@ app = Flask(__name__)
 @app.route("/")
 def root():
     return "Root Route!"
-
 
 @app.route("/submit_application", methods=["POST"])
 def submit_application():
@@ -34,18 +34,25 @@ def get_application(saksnummer=None):
         raise BadRequest
     return jsonify(res)
 
-#TODO: route Get related children til frontend
+#TODO: Add a filter for children returned, currently all children are returned
 @app.route("/get_children/<personidentifikator>")
 def get_children(personidentifikator):
     res = FetchChildren().get_related_children(personidentifikator)
-    if res == None:
+    if res is None:
         raise BadRequest
     return jsonify(res)
 
 #TODO: route get partner til frontend
+@app.route("/get_partner/<personidentifikator>")
+def get_partner(personidentifikator):
+    res = FetchPartner().get_partner(personidentifikator)
+    if res is None:
+        raise BadRequest
+    return jsonify(res)
 
+#TODO: route get person
 
 
 if __name__ == '__main__':
     from waitress import serve
-    serve(app, host='0.0.0.0', port=5000)
+    serve(app, host='0.0.0.0', port=5001)

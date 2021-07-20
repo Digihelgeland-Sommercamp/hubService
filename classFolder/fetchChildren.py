@@ -7,16 +7,17 @@ class FetchChildren():
         pass
 
     def get_related_children(self, personidentifikator):
+        # Getting the person that requests children from folkeregisteret
         person_requesting_children = self._get_folkreg_data(personidentifikator)
         if "familierelasjon" not in person_requesting_children:
             raise BadRequest
-        # print(person_requesting_children["familierelasjon"])
-        # return{"test": "test"}
 
+        # Creating a dict to hold all children
         relations = person_requesting_children["familierelasjon"]
         number_of_children = self._get_number_of_children(relations)
         related_children = [dict for x in range(number_of_children)]
         
+        # Adding all children to the related_children dict
         child_index = 0
         for i in range(len(relations)):
             if relations[i]["relatertPersonsRolle"] == "barn":
