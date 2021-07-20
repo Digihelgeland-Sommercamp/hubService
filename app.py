@@ -6,6 +6,7 @@ import waitress
 from classFolder.application import Application
 from classFolder.fetchApplication import FetchApplication
 from classFolder.submitApplication import SubmitApplication
+from classFolder.fetchChildren import FetchChildren
 
 app = Flask(__name__)
 
@@ -34,6 +35,12 @@ def get_application(saksnummer=None):
     return jsonify(res)
 
 #TODO: route Get related children til frontend
+@app.route("/get_children/<personidentifikator>")
+def get_children(personidentifikator):
+    res = FetchChildren().get_related_children(personidentifikator)
+    if res == None:
+        raise BadRequest
+    return jsonify(res)
 
 #TODO: route get partner til frontend
 
