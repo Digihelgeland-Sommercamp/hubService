@@ -8,6 +8,7 @@ from classFolder.fetchApplication import FetchApplication
 from classFolder.submitApplication import SubmitApplication
 from classFolder.fetchChildren import FetchChildren
 from classFolder.fetchPartner import FetchPartner
+from classFolder.fetchApplicant import FetchApplicant
 
 app = Flask(__name__)
 
@@ -50,8 +51,13 @@ def get_partner(personidentifikator):
         raise BadRequest
     return jsonify(res)
 
-#TODO: route get person
 
+@app.route("/get_applicant/<personidentifikator>")
+def get_applicant(personidentifikator):
+    res = FetchApplicant().get_applicant_data(personidentifikator)
+    if res is None:
+        raise BadRequest
+    return jsonify(res)
 
 if __name__ == '__main__':
     from waitress import serve
