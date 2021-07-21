@@ -11,16 +11,16 @@ class SubmitApplication():
     def handle_application(self):
         #sjekk om søknaden uansett må behandles manuelt
         if not self.application.is_ordinary():
-            self.aborted_save_application()
-            return True
+            res = self.aborted_save_application()
+            return res
 
         #hent folkeregisterdata
         try:
             folkreg_data = self.get_folkreg_data(self.application.get_idnummer())
             self.application.update_folkreg_data(folkreg_data)
         except Exception as e:
-            self.aborted_save_application()
-            raise Exception(e)
+            res = self.aborted_save_application()
+            return res
 
         #hent søkers skattemelding
         applicant_skattemelding = None
@@ -29,8 +29,8 @@ class SubmitApplication():
             # applicant_skattemelding = self.get_skattemelding("2019", "03839199405")
 
         except Exception as e:
-            self.aborted_save_application()
-            raise Exception(e)
+            res = self.aborted_save_application()
+            return res
         
         #hent samboer sin skattemelding
         cohabitant_skattemelding = None
@@ -38,8 +38,8 @@ class SubmitApplication():
             try:
                 cohabitant_skattemelding = self.get_skattemelding("2019", self.application.get_cohabitant())
             except Exception:
-                self.aborted_save_application()
-                raise Exception('Obtaining cohabitant skattemelding failed')
+                res = self.aborted_save_application()
+                return res
 
         #summer inntekt
         self.application.samlet_inntekt = self.sum_nettoinntekt(applicant_skattemelding, cohabitant_skattemelding)
@@ -50,16 +50,18 @@ class SubmitApplication():
         self.application.maks_aarlig_bhg_kostnad = res['maxPay']
 
         #lagre søknad
-        self.save_application()
+        respons = self.save_application()
 
-        return True #if successful operation
+        return respons #if successful operation
 
     def save_application(self):
-        self.contacter.save_application(self.application.export_as_json())
+        res = self.contacter.save_application(self.application.export_as_json())
+        return res
 
     def aborted_save_application(self):
         self.application.requires_manual_processing = True
-        self.contacter.save_application(self.application.export_as_json())
+        res = self.contacter.save_application(self.application.export_as_json())
+        return res
 
     def get_skattemelding(self, inntektsaar, personidentifikator):
         return json.loads(self.contacter.get_skattemelding(inntektsaar, personidentifikator))
