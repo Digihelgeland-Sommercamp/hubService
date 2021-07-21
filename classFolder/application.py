@@ -32,6 +32,11 @@ class Application():
         self.familierelasjon = self.application_data['familierelasjon']
         self.requires_manual_processing = False
 
+        if "status_historikk" not in self.application_data:
+            self.status_historikk = []
+        else:
+            self.status_historikk = self.application_data["status_historikk"]
+
     #Sjekker flagg i søknad, dersom noen flagg er true
     #må søknaden mest sannsynlig behandles manuelt
     def is_ordinary(self):
