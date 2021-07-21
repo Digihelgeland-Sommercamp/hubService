@@ -9,6 +9,8 @@ from classFolder.submitApplication import SubmitApplication
 from classFolder.fetchChildren import FetchChildren
 from classFolder.fetchPartner import FetchPartner
 from classFolder.fetchApplicant import FetchApplicant
+from classFolder.fetchApplicationStatus import FetchApplicationStatus
+from classFolder.setApplicationStatus import SetApplicationStatus
 
 app = Flask(__name__)
 
@@ -20,11 +22,14 @@ def root():
 @app.route("/submit_application", methods=["POST"])
 def submit_application():
     sub_application = SubmitApplication(request.get_json())
-    res = sub_application.handle_application()
+    saksnummer = sub_application.handle_application()
+    res = {
+        "saksnummer": saksnummer
+    }
     del sub_application
     if not res:
         raise InternalServerError
-    return "Success"
+    return jsonify(res)
 
 @app.route("/get_application/<saksnummer>")
 def get_application(saksnummer=None):
@@ -33,6 +38,24 @@ def get_application(saksnummer=None):
     del fetch_application
     if res == None:
         raise BadRequest
+    return jsonify(res)
+
+@app.route("/get_application_status/<saksnummer>")
+def get_application_status(saksnummer=None):
+    fetch_application_status = FetchApplicationStatus(saksnummer)
+    res = fetch_application_status.fetch_application_status_from_expose_user()
+    del fetch_application_status
+    if res == None:
+        raise BadRequest
+    return jsonify(res)
+
+@app.route("/set_application_status/<saksnummer>", methods=["POST"])
+def set_application_status(saksnummer=None):
+    data = request.get_json()
+    if 'status' not in data.keys():
+        raise BadRequest("Missing status key in json")
+    set_application_status = SetApplicationStatus(saksnummer, data['status'])
+    res = set_application_status.set_application_status()
     return jsonify(res)
 
 #TODO: Add a filter for children returned, currently all children are returned

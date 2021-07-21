@@ -43,4 +43,17 @@ class Contacter():
 
     def save_application(self, application_json):
         r = requests.post(self.exposedataserviceURL + "applications/submit_application", json=application_json)
+        print(r.text)
+        return r.text
+    
+    def fetch_application(self, saksnummer):
+        r = requests.get(self.exposedataserviceURL + "applications/" + str(saksnummer))
+        return r.text
 
+    def fetch_application_status(self, saksnummer):
+        r = requests.get(self.exposedataserviceURL + "applications/" + str(saksnummer) + "/status")
+        return r.text
+
+    def set_application_status(self, saksnummer, status):
+        r = requests.post(self.exposedataserviceURL + "applcations/" + str(saksnummer) + "/update_status", data=str(status))
+        return r.text
