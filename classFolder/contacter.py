@@ -57,3 +57,7 @@ class Contacter():
     def set_application_status(self, saksnummer, status):
         r = requests.post(self.exposedataserviceURL + "applications/" + str(saksnummer) + "/update_status", data=str(status))
         return r.text
+
+    def upload_attachment(self, data):
+        r = requests.post(self.exposedataserviceURL + "post_attachment/", files=data)
+        return r.text

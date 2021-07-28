@@ -11,6 +11,7 @@ from classFolder.fetchPartner import FetchPartner
 from classFolder.fetchApplicant import FetchApplicant
 from classFolder.fetchApplicationStatus import FetchApplicationStatus
 from classFolder.setApplicationStatus import SetApplicationStatus
+from classFolder.uploadAttachment import UploadAttachment
 
 app = Flask(__name__)
 
@@ -18,6 +19,7 @@ app = Flask(__name__)
 @app.route("/")
 def root():
     return "Root Route!"
+
 
 @app.route("/submit_application", methods=["POST"])
 def submit_application():
@@ -31,6 +33,7 @@ def submit_application():
         raise InternalServerError
     return jsonify(res)
 
+
 @app.route("/get_application/<saksnummer>")
 def get_application(saksnummer=None):
     fetch_application = FetchApplication(saksnummer)
@@ -40,6 +43,7 @@ def get_application(saksnummer=None):
         raise BadRequest
     return jsonify(res)
 
+
 @app.route("/get_application_status/<saksnummer>")
 def get_application_status(saksnummer=None):
     fetch_application_status = FetchApplicationStatus(saksnummer)
@@ -48,6 +52,7 @@ def get_application_status(saksnummer=None):
     if res == None:
         raise BadRequest
     return jsonify(res)
+
 
 @app.route("/set_application_status/<saksnummer>", methods=["POST"])
 def set_application_status(saksnummer=None):
@@ -80,6 +85,14 @@ def get_applicant(personidentifikator):
     res = FetchApplicant().get_applicant_data(personidentifikator)
     if res is None:
         raise BadRequest
+    return jsonify(res)
+
+
+@app.route("/add_attachment", methods=["POST"])
+def add_attachment():
+    data = request.files
+    uploader = UploadAttachment(data)
+    res = uploader.upload_attachment()
     return jsonify(res)
 
 if __name__ == '__main__':
