@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from requests.models import Response
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
 import waitress
+import requests
 
 from classFolder.application import Application
 from classFolder.fetchApplication import FetchApplication
@@ -94,6 +95,7 @@ def add_attachment():
     uploader = UploadAttachment(data)
     res = uploader.upload_attachment()
     return jsonify(res)
+
 
 if __name__ == '__main__':
     from waitress import serve

@@ -59,5 +59,9 @@ class Contacter():
         return r.text
 
     def upload_attachment(self, data):
-        r = requests.post(self.exposedataserviceURL + "post_attachment/", files=data)
+        files = {}
+        counter = 0
+        for i in data.keys():
+            files[i] = (data[i].filename, data[i].stream.read(), data[i].content_type)
+        r = requests.post(self.exposedataserviceURL + "applications/upload_attachment", files=files)
         return r.text
