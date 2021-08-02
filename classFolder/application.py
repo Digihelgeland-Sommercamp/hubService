@@ -13,23 +13,23 @@ class Application():
             raise BadRequest
         self.application_data = copy.deepcopy(incoming_application_data)
 
-        self.saksnummer = self.application_data['saksnummer']
-        self.status = self.application_data['status']
+        self.saksnummer = 'saksnummer' in self.application_data if self.application_data['saksnummer'] else None
+        self.status = 'status' in self.application_data if self.application_data['status'] else None
         self.identifikasjonsnummer = self.application_data['identifikasjonsnummer']
-        self.navn = self.application_data['navn']
+        self.navn = 'navn' in self.application_data if self.application_data['navn'] else None
         self.barn_barnehage = self.application_data['opplysninger_om_barn_barnehage']
         self.barn_SFO = self.application_data['opplysninger_om_barn_SFO']
         self.sivilstand = self.application_data['sivilstand']
-        self.bostedsadresse = self.application_data['bostedsadresse']
-        self.preferert_kontaktadresse = self.application_data['preferertKontaktadresse']
-        self.foedsel = self.application_data['foedsel']
-        self.postadresse = self.application_data['postadresse']
-        self.samlet_inntekt = self.application_data['samlet_inntekt']
-        self.gratis_kjernetid = self.application_data['gratis_kjernetid']
-        self.maks_aarlig_bhg_kostnad = self.application_data['maks_aarlig_bhg_kostnad']
-        self.flagg = self.application_data['flagg']
-        self.foreldreansvar = self.application_data['foreldreansvar']
-        self.familierelasjon = self.application_data['familierelasjon']
+        self.bostedsadresse = 'bostedsadresse' in self.application_data if self.application_data['bostedsadresse'] else None
+        self.preferert_kontaktadresse = 'preferertKontaktadresse' in self.application_data if self.application_data['preferertKontaktadresse'] else None
+        self.foedsel = 'foedsel' in self.application_data if self.application_data['foedsel'] else None
+        self.postadresse = 'postadresse' in self.application_data if self.application_data['postadresse'] else None
+        self.samlet_inntekt = 'samlet_inntekt' in self.application_data if self.application_data['samlet_inntekt'] else None
+        self.gratis_kjernetid = 'gratis_kjernetid' in self.application_data if self.application_data['gratis_kjernetid'] else None
+        self.maks_aarlig_bhg_kostnad = 'maks_aarlig_bhg_kostnad' in self.application_data if self.application_data['maks_aarlig_bhg_kostnad'] else None
+        self.flagg = 'flagg' in self.application_data if self.application_data['flagg'] else None
+        self.foreldreansvar = 'foreldreansvar' in self.application_data if self.application_data['foreldreansvar'] else None
+        self.familierelasjon = 'familierelasjon' in self.application_data if  self.application_data['familierelasjon'] else None
         self.requires_manual_processing = False
 
         if "status_historikk" not in self.application_data:
