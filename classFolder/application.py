@@ -47,6 +47,7 @@ class Application():
         return True
 
     #sjekker om vedkommende har samboer
+    #TODO Check if this is necessary for non-automatic applications.
     def has_cohabitant(self):
         if self.sivilstand['har_samboer']:
             dato = date.today().strftime("%Y-%m-%d")
