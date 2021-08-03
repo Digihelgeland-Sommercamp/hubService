@@ -44,6 +44,7 @@ class FetchChildren():
             child_from_folkreg = json.loads(child_from_folkreg)
             child = {}
             child["navn"] = child_from_folkreg["navn"]
+            child["foedsel"] = child_from_folkreg["foedsel"]["foedselsdato"]
             return child
         except Exception:
             return None
