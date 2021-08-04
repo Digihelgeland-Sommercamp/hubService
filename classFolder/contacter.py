@@ -49,6 +49,9 @@ class Contacter():
     def fetch_application(self, saksnummer):
         r = requests.get(self.exposedataserviceURL + "applications/" + str(saksnummer))
         return r.text
+    
+    def fetch_all_applications(self, personidentifikator):
+        r = requests.get(self.exposedataserviceURL + "all_applications/" + str(personidentifikator))
 
     def fetch_application_status(self, saksnummer):
         r = requests.get(self.exposedataserviceURL + "applications/" + str(saksnummer) + "/status")

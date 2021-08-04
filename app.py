@@ -1,3 +1,4 @@
+from classFolder import fetchAllApplications
 from flask import Flask, request, jsonify
 from requests.models import Response
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
@@ -13,6 +14,7 @@ from classFolder.fetchApplicant import FetchApplicant
 from classFolder.fetchApplicationStatus import FetchApplicationStatus
 from classFolder.setApplicationStatus import SetApplicationStatus
 from classFolder.uploadAttachment import UploadAttachment
+from classFolder.fetchAllApplications import FetchAllApplications
 
 app = Flask(__name__)
 
@@ -42,6 +44,11 @@ def get_application(saksnummer=None):
     del fetch_application
     if res == None:
         raise BadRequest
+    return jsonify(res)
+
+@app.route("/get_all_applications/<personidentifikator>")
+def get_all_applications(personidentifikator=None):
+    res = FetchAllApplications().get_applicants_data(personidentifikator)
     return jsonify(res)
 
 
