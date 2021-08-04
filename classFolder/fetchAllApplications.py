@@ -4,5 +4,6 @@ import json
 class FetchAllApplications:
 
     def get_applicants_data(self, personidentifikator):
-        applications = Contacter().fetch_all_applications(personidentifikator)
+        contacter = Contacter()
+        applications = contacter.fetch_all_applications(personidentifikator)
         return applications
