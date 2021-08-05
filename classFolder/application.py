@@ -31,7 +31,7 @@ class Application():
         self.foreldreansvar = self.application_data['foreldreansvar'] if 'foreldreansvar' in self.application_data else None
         self.familierelasjon = self.application_data['familierelasjon'] if 'familierelasjon' in self.application_data else None
         self.requires_manual_processing = False
-        self.dato_siste_endring = date.today()
+        self.dato_siste_endring = date.today().strftime("%d-%m-%Y")
 
         if "status_historikk" not in self.application_data:
             self.status_historikk = []
