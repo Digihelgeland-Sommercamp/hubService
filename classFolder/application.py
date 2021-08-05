@@ -14,7 +14,7 @@ class Application():
         self.application_data = copy.deepcopy(incoming_application_data)
 
         self.saksnummer = self.application_data['saksnummer'] if 'saksnummer' in self.application_data else None
-        self.status = self.application_data['status'] if 'status' in self.application_data else None
+        self.status = self.application_data['status'] if 'status' in self.application_data else "Mottatt"
         self.identifikasjonsnummer = self.application_data['identifikasjonsnummer']
         self.navn = self.application_data['navn'] if 'navn' in self.application_data else None
         self.barn_barnehage = self.application_data['opplysninger_om_barn_barnehage']
@@ -31,6 +31,7 @@ class Application():
         self.foreldreansvar = self.application_data['foreldreansvar'] if 'foreldreansvar' in self.application_data else None
         self.familierelasjon = self.application_data['familierelasjon'] if 'familierelasjon' in self.application_data else None
         self.requires_manual_processing = False
+        self.dato_siste_endring = date.today()
 
         if "status_historikk" not in self.application_data:
             self.status_historikk = []
@@ -94,7 +95,8 @@ class Application():
             "foreldreansvar": self.foreldreansvar,
             "familierelasjon": self.familierelasjon,
             "requires_manual_processing": self. requires_manual_processing,
-            "id": "1" #for database
+            "id": "1", #for database
+            "dato_siste_endring": self.dato_siste_endring
         })
 
 #eksempelbruk av application-metoder
