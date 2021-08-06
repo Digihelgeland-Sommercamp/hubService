@@ -3,3 +3,4 @@ waitress>=2.0.0
 requests>=2.25.1
 azure-core>=1.16.0
 azure-storage-blob>=12.8.1
+flask-cors>=3.0.10
