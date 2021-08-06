@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 from requests.models import Response
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
 import waitress
+from flask_cors import CORS, cross_origin
 import requests
 
 from classFolder.application import Application
@@ -17,6 +18,7 @@ from classFolder.uploadAttachment import UploadAttachment
 from classFolder.fetchAllApplications import FetchAllApplications
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 
 @app.route("/")
