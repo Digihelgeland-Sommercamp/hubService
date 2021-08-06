@@ -1,8 +1,10 @@
+from classFolder import fetchAllApplications
 from flask import Flask, request, jsonify
 from requests.models import Response
 from werkzeug.exceptions import HTTPException, InternalServerError, BadRequest
 import waitress
 from flask_cors import CORS, cross_origin
+import requests
 
 from classFolder.application import Application
 from classFolder.fetchApplication import FetchApplication
@@ -12,6 +14,8 @@ from classFolder.fetchPartner import FetchPartner
 from classFolder.fetchApplicant import FetchApplicant
 from classFolder.fetchApplicationStatus import FetchApplicationStatus
 from classFolder.setApplicationStatus import SetApplicationStatus
+from classFolder.uploadAttachment import UploadAttachment
+from classFolder.fetchAllApplications import FetchAllApplications
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
@@ -20,6 +24,7 @@ CORS(app, support_credentials=True)
 @app.route("/")
 def root():
     return "Root Route!"
+
 
 @app.route("/submit_application", methods=["POST"])
 def submit_application():
@@ -33,6 +38,7 @@ def submit_application():
         raise InternalServerError
     return jsonify(res)
 
+
 @app.route("/get_application/<saksnummer>")
 def get_application(saksnummer=None):
     fetch_application = FetchApplication(saksnummer)
@@ -42,6 +48,13 @@ def get_application(saksnummer=None):
         raise BadRequest
     return jsonify(res)
 
+@app.route("/get_all_applications/<personidentifikator>")
+def get_all_applications(personidentifikator=None):
+    fetch_applications = FetchAllApplications()
+    res = fetch_applications.get_applicants_data(personidentifikator)
+    return jsonify(res)
+
+
 @app.route("/get_application_status/<saksnummer>")
 def get_application_status(saksnummer=None):
     fetch_application_status = FetchApplicationStatus(saksnummer)
@@ -50,6 +63,7 @@ def get_application_status(saksnummer=None):
     if res == None:
         raise BadRequest
     return jsonify(res)
+
 
 @app.route("/set_application_status/<saksnummer>", methods=["POST"])
 def set_application_status(saksnummer=None):
@@ -83,6 +97,15 @@ def get_applicant(personidentifikator):
     if res is None:
         raise BadRequest
     return jsonify(res)
+
+
+@app.route("/add_attachment", methods=["POST"])
+def add_attachment():
+    data = request.files
+    uploader = UploadAttachment(data)
+    res = uploader.upload_attachment()
+    return jsonify(res)
+
 
 if __name__ == '__main__':
     from waitress import serve

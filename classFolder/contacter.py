@@ -49,6 +49,10 @@ class Contacter():
     def fetch_application(self, saksnummer):
         r = requests.get(self.exposedataserviceURL + "applications/" + str(saksnummer))
         return r.text
+    
+    def fetch_all_applications(self, personidentifikator):
+        r = requests.get(self.exposedataserviceURL + "all_applications/" + str(personidentifikator))
+        return r.text
 
     def fetch_application_status(self, saksnummer):
         r = requests.get(self.exposedataserviceURL + "applications/" + str(saksnummer) + "/status")
@@ -56,4 +60,12 @@ class Contacter():
 
     def set_application_status(self, saksnummer, status):
         r = requests.post(self.exposedataserviceURL + "applications/" + str(saksnummer) + "/update_status", data=str(status))
+        return r.text
+
+    def upload_attachment(self, data):
+        files = {}
+        counter = 0
+        for i in data.keys():
+            files[i] = (data[i].filename, data[i].stream.read(), data[i].content_type)
+        r = requests.post(self.exposedataserviceURL + "applications/upload_attachment", files=files)
         return r.text

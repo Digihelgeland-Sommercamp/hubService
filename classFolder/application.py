@@ -13,24 +13,25 @@ class Application():
             raise BadRequest
         self.application_data = copy.deepcopy(incoming_application_data)
 
-        self.saksnummer = self.application_data['saksnummer']
-        self.status = self.application_data['status']
+        self.saksnummer = self.application_data['saksnummer'] if 'saksnummer' in self.application_data else None
+        self.status = self.application_data['status'] if 'status' in self.application_data else "Mottatt"
         self.identifikasjonsnummer = self.application_data['identifikasjonsnummer']
-        self.navn = self.application_data['navn']
+        self.navn = self.application_data['navn'] if 'navn' in self.application_data else None
         self.barn_barnehage = self.application_data['opplysninger_om_barn_barnehage']
         self.barn_SFO = self.application_data['opplysninger_om_barn_SFO']
         self.sivilstand = self.application_data['sivilstand']
-        self.bostedsadresse = self.application_data['bostedsadresse']
-        self.preferert_kontaktadresse = self.application_data['preferertKontaktadresse']
-        self.foedsel = self.application_data['foedsel']
-        self.postadresse = self.application_data['postadresse']
-        self.samlet_inntekt = self.application_data['samlet_inntekt']
-        self.gratis_kjernetid = self.application_data['gratis_kjernetid']
-        self.maks_aarlig_bhg_kostnad = self.application_data['maks_aarlig_bhg_kostnad']
-        self.flagg = self.application_data['flagg']
-        self.foreldreansvar = self.application_data['foreldreansvar']
-        self.familierelasjon = self.application_data['familierelasjon']
+        self.bostedsadresse = self.application_data['bostedsadresse'] if 'bostedsadresse' in self.application_data else None
+        self.preferert_kontaktadresse = self.application_data['preferertKontaktadresse'] if 'preferertKontaktadresse' in self.application_data else None
+        self.foedsel = self.application_data['foedsel'] if 'foedsel' in self.application_data else None
+        self.postadresse = self.application_data['postadresse'] if 'postadresse' in self.application_data else None
+        self.samlet_inntekt = self.application_data['samlet_inntekt'] if 'samlet_inntekt' in self.application_data else None
+        self.gratis_kjernetid = self.application_data['gratis_kjernetid'] if 'gratis_kjernetid' in self.application_data else None
+        self.maks_aarlig_bhg_kostnad = self.application_data['maks_aarlig_bhg_kostnad'] if 'maks_aarlig_bhg_kostnad' in self.application_data else None
+        self.flagg = self.application_data['flagg'] if 'flagg' in self.application_data else None
+        self.foreldreansvar = self.application_data['foreldreansvar'] if 'foreldreansvar' in self.application_data else None
+        self.familierelasjon = self.application_data['familierelasjon'] if 'familierelasjon' in self.application_data else None
         self.requires_manual_processing = False
+        self.dato_siste_endring = date.today().strftime("%d-%m-%Y")
 
         if "status_historikk" not in self.application_data:
             self.status_historikk = []
@@ -47,6 +48,7 @@ class Application():
         return True
 
     #sjekker om vedkommende har samboer
+    #TODO Check if this is necessary for non-automatic applications.
     def has_cohabitant(self):
         if self.sivilstand['har_samboer']:
             dato = date.today().strftime("%Y-%m-%d")
@@ -93,7 +95,8 @@ class Application():
             "foreldreansvar": self.foreldreansvar,
             "familierelasjon": self.familierelasjon,
             "requires_manual_processing": self. requires_manual_processing,
-            "id": "1" #for database
+            "id": "1", #for database
+            "dato_siste_endring": self.dato_siste_endring
         })
 
 #eksempelbruk av application-metoder
