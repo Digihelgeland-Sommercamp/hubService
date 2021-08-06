@@ -7,7 +7,7 @@ It is coupled with the following microservices:
 * [Folkeregisteret](https://github.com/Digihelgeland-Sommercamp/fregService)
 * [Evaluator](https://github.com/Digihelgeland-Sommercamp/evaluator)
 
-##API
+## API
 Every route can be found in [app.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/app.py)
 Each [GET] route below links to the return of the request, while [POST] links to an example body that should be sent.
 
@@ -22,7 +22,7 @@ Each [GET] route below links to the return of the request, while [POST] links to
 * [GET] [/get_partner/\<personidentifikator>]()
 * [GET] [/get_applicant/\<personidentifikator>]()
 
-###Installation
+### Installation
 This service is intended to run in a kubernetes cluster with the micro services it is coupled with, mentioned at the top of this document. It makes no sense for this service to run alone.
 The intention is to only expose this service with a public IP, but this is not mandatory.
 
@@ -32,6 +32,6 @@ You can use the [deployment.yaml](https://github.com/Digihelgeland-Sommercamp/hu
 
 [The latest docker image can be found here](https://hub.docker.com/repository/docker/johannesdigdir/hub_service)
 
-###Architecture
+### Architecture
 
-![alt text](https://github.com/Altinn/summer-camp-2021/blob/main/Documentation/Architecture/Microservice%20overview.png "Picture of the architecture and coupling of the services")
+![Picture of the architecture and coupling of the services](https://github.com/Altinn/summer-camp-2021/blob/main/Documentation/Architecture/Microservice%20overview.png "Picture of the architecture and coupling of the services")
