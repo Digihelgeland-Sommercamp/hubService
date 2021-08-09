@@ -8,7 +8,7 @@ It is coupled with the following microservices:
 * [Evaluator](https://github.com/Digihelgeland-Sommercamp/evaluator)
 
 ## API
-Every route can be found in [app.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/app.py)
+Every route can be found in [app.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/app.py) 
 Each route below links to the OpenAPI specification on swaggerhub.
 
 * [POST] [/submit_application](https://app.swaggerhub.com/apis/Johannes-s-b/Hubservice/0.1)
