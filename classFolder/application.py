@@ -69,7 +69,7 @@ class Application():
     #oppdaterer attributter relatert til folkeregistrert data
     def update_folkreg_data(self, folkreg_data):
         self.bostedsadresse = folkreg_data['bostedsadresse']
-        self.familierelasjon = folkreg_data['familierelasjon']
+        # self.familierelasjon = folkreg_data['familierelasjon']
         self.foreldreansvar = folkreg_data['foreldreansvar']
         self.postadresse = folkreg_data['postadresse']
         self.preferert_kontaktadresse = folkreg_data['preferertKontaktadresse']
