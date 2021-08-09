@@ -1,4 +1,5 @@
 # Hub Service
+Hub service is one of multiple micro services for redusert foreldrebetaling. Visit the [main repo](https://github.com/Altinn/summer-camp-2021) to get an overview and read more documentation.
 
 Hub service is intended to be a communication layer between the front and back-end.
 It is coupled with the following microservices:
