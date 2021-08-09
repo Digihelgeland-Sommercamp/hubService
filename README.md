@@ -26,7 +26,7 @@ Each route below links to the OpenAPI specification on swaggerhub.
 This service is intended to run in a kubernetes cluster with the micro services it is coupled with, mentioned at the top of this document. It makes no sense for this service to run alone.
 The intention is to only expose this service with a public IP, but this is not mandatory.
 
-Update [config.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/classFolder/config.py) to reflect the hostnames and ports of the other services.
+Update [config.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/classFolder/config.py) to reflect the URL's and ports of the other services.
 
 You can use the [deployment.yaml](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/deployment.yaml) to create a deployment in kubernetes, and [service.yaml](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/service.yaml) to create a service.
 
