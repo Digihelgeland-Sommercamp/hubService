@@ -8,7 +8,7 @@ It is coupled with the following microservices:
 * [Evaluator](https://github.com/Digihelgeland-Sommercamp/evaluator)
 
 ## API
-Every route can be found in [app.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/app.py) 
+Every route can be found in [app.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/app.py)   
 Each route below links to the OpenAPI specification on swaggerhub.
 
 * [POST] [/submit_application](https://app.swaggerhub.com/apis/Johannes-s-b/Hubservice/0.1)
@@ -31,6 +31,10 @@ Update [config.py](https://github.com/Digihelgeland-Sommercamp/hubService/blob/m
 You can use the [deployment.yaml](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/deployment.yaml) to create a deployment in kubernetes, and [service.yaml](https://github.com/Digihelgeland-Sommercamp/hubService/blob/main/service.yaml) to create a service.
 
 [The latest docker image can be found here](https://hub.docker.com/repository/docker/johannesdigdir/hub_service)
+
+### UML
+All class diagrams of the service
+![Picture showing all class diagrams of hubservice](https://github.com/Altinn/summer-camp-2021/blob/main/Documentation/UML/Hubservice/HUB_klassediagram.png "Picture showing all class diagrams of hubservice")
 
 ### Architecture
 Visual representation of the microservices:

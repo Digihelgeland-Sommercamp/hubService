@@ -51,7 +51,7 @@ def get_application(saksnummer=None):
 @app.route("/get_all_applications/<personidentifikator>")
 def get_all_applications(personidentifikator=None):
     fetch_applications = FetchAllApplications()
-    res = fetch_applications.get_applicants_data(personidentifikator)
+    res = fetch_applications.get_applications_data(personidentifikator)
     return jsonify(res)
 
 

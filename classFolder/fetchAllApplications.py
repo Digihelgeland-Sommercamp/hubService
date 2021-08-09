@@ -3,7 +3,7 @@ import json
 
 class FetchAllApplications:
 
-    def get_applicants_data(self, personidentifikator):
+    def get_applications_data(self, personidentifikator):
         contacter = Contacter()
         applications = contacter.fetch_all_applications(personidentifikator)
         return applications
