@@ -30,6 +30,7 @@ class Application():
         self.familierelasjon = self.application_data['familierelasjon'] if 'familierelasjon' in self.application_data else None
         self.requires_manual_processing = False
         self.dato_siste_endring = date.today().strftime("%d-%m-%Y")
+        self.vedlegg = self.application_data['vedlegg'] if 'vedlegg' in self.application_data else None
 
         if "status_historikk" not in self.application_data:
             self.status_historikk = [
@@ -96,7 +97,8 @@ class Application():
             "requires_manual_processing": self. requires_manual_processing,
             "id": "1", #for database
             "dato_siste_endring": self.dato_siste_endring,
-            "status_historikk": self.status_historikk
+            "status_historikk": self.status_historikk,
+            "vedlegg": self.vedlegg
         })
 
 #eksempelbruk av application-metoder
