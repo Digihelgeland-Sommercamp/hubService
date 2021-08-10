@@ -95,7 +95,8 @@ class Application():
             "familierelasjon": self.familierelasjon,
             "requires_manual_processing": self. requires_manual_processing,
             "id": "1", #for database
-            "dato_siste_endring": self.dato_siste_endring
+            "dato_siste_endring": self.dato_siste_endring,
+            "status_historikk": self.status_historikk
         })
 
 #eksempelbruk av application-metoder
