@@ -21,9 +21,7 @@ class Application():
         self.barn_SFO = self.application_data['opplysninger_om_barn_SFO']
         self.sivilstand = self.application_data['sivilstand']
         self.bostedsadresse = self.application_data['bostedsadresse'] if 'bostedsadresse' in self.application_data else None
-        self.preferert_kontaktadresse = self.application_data['preferertKontaktadresse'] if 'preferertKontaktadresse' in self.application_data else None
         self.foedsel = self.application_data['foedsel'] if 'foedsel' in self.application_data else None
-        self.postadresse = self.application_data['postadresse'] if 'postadresse' in self.application_data else None
         self.samlet_inntekt = self.application_data['samlet_inntekt'] if 'samlet_inntekt' in self.application_data else None
         self.gratis_kjernetid = self.application_data['gratis_kjernetid'] if 'gratis_kjernetid' in self.application_data else None
         self.maks_aarlig_bhg_kostnad = self.application_data['maks_aarlig_bhg_kostnad'] if 'maks_aarlig_bhg_kostnad' in self.application_data else None
@@ -75,10 +73,7 @@ class Application():
     #oppdaterer attributter relatert til folkeregistrert data
     def update_folkreg_data(self, folkreg_data):
         self.bostedsadresse = folkreg_data['bostedsadresse']
-        # self.familierelasjon = folkreg_data['familierelasjon']
         self.foreldreansvar = folkreg_data['foreldreansvar']
-        self.postadresse = folkreg_data['postadresse']
-        self.preferert_kontaktadresse = folkreg_data['preferertKontaktadresse']
         self.foedsel = folkreg_data['foedsel']
 
     def export_as_json(self):
@@ -91,9 +86,7 @@ class Application():
             "barn_SFO": self.barn_SFO,
             "sivilstand": self.sivilstand,
             "bostedsadresse": self.bostedsadresse,
-            "preferert_kontaktadresse": self.preferert_kontaktadresse,
             "foedsel": self.foedsel,
-            "postadresse": self.postadresse,
             "samlet_inntekt": self.samlet_inntekt,
             "gratis_kjernetid": self.gratis_kjernetid,
             "maks_aarlig_bhg_kostnad": self.maks_aarlig_bhg_kostnad,
