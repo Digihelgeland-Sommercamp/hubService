@@ -34,7 +34,13 @@ class Application():
         self.dato_siste_endring = date.today().strftime("%d-%m-%Y")
 
         if "status_historikk" not in self.application_data:
-            self.status_historikk = []
+            self.status_historikk = [
+                {
+                    "seq": 0,
+                    "date": str(self.dato_siste_endring),
+                    "status": self.status
+                }
+            ]
         else:
             self.status_historikk = self.application_data["status_historikk"]
 
