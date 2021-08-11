@@ -3,6 +3,10 @@
   "info": {
     "title": "Hubservice",
     "description": "Hubservice is the only micro-service with a public IP in Digihelgeland Sommercamp 2021's solution for redusert foreldrebetaling.",
+    "contact": {
+      "name": "Demomann",
+      "email": "demo@kommune.no"
+    },
     "version": "0.1"
   },
   "servers": [
