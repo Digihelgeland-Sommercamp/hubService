@@ -1,0 +1,317 @@
+---
+openapi: 3.0.1
+info:
+  title: Hubservice
+  description: Hubservice is the only micro-service with a public IP in Digihelgeland Sommercamp 2021's solution for redusert foreldrebetaling.
+  version: "0.1"
+servers:
+- url: https://virtserver.swaggerhub.com/Johannes-s-b/Hubservice/0.1
+  description: SwaggerHub API Auto Mocking
+- url: http://51.107.208.107
+paths:
+  /get_all_applications/<personidentifikator>:
+    get:
+      description: Get all applications on an applicant
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                "0":
+                  value: |
+                    "[{\"saksnummer\": 928043964, \"status\": \"Mottatt\"}, {\"saksnummer\": 452898553, \"status\": null}, {\"saksnummer\": 928674372, \"status\": null}, {\"saksnummer\": 774385224, \"status\": null}, {\"saksnummer\": 700064866, \"status\": null}, {\"saksnummer\": 476832490, \"status\": null}, {\"saksnummer\": 340098859, \"status\": null}, {\"saksnummer\": 736269598, \"status\": null}, {\"saksnummer\": 979708794, \"status\": null}, {\"saksnummer\": 659187395, \"status\": null}, {\"saksnummer\": 311624584, \"status\": null}, {\"saksnummer\": 523031523, \"status\": null}, {\"saksnummer\": 747711895, \"status\": null}, {\"saksnummer\": 287125765, \"status\": \"Mottatt\", \"dato_siste_endring\": \"05-08-2021\"}, {\"saksnummer\": 772056351, \"status\": \"Mottatt\", \"dato_siste_endring\": \"05-08-2021\"}, {\"saksnummer\": 916744041, \"status\": \"Mottatt\", \"dato_siste_endring\": \"05-08-2021\"}, {\"saksnummer\": 219596408, \"status\": \"Mottatt\", \"dato_siste_endring\": \"05-08-2021\"}]"
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /get_children/<personidentifikator>:
+    get:
+      description: Get all children of the applicant
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                "0":
+                  value: |
+                    [{"foedsel":"2016-08-28","navn":{"etternavn":"SKO","forkortetNavn":"SKO EKTE","fornavn":"EKTE","mellomnavn":null}}]
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /get_applicant/<peronidentifikator>:
+    get:
+      description: Get all information on an applicant
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+              examples:
+                "0":
+                  value: |
+                    {"bostedsadresse":{"ukjentBosted":null,"vegadresse":{"adressekode":"1048","adressenavn":"Librotet","adressenummer":{"husbokstav":null,"husnummer":"10"},"adressetilleggsnavn":null,"bruksenhetsnummer":null,"bruksenhetstype":null,"coAdressenavn":null,"kommunenummer":"4634","poststed":{"postnummer":"5984","poststedsnavn":"MATREDAL"}}},"navn":{"etternavn":"G\u00c5TE","forkortetNavn":"G\u00c5TE STERK ALKOVE","fornavn":"STERK","mellomnavn":"ALKOVE"},"sivilstand":{"gyldighetstidspunkt":"2017-09-03T00:00:00Z","sivilstand":"gift","sivilstandsdato":"2017-09-03"}}
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /get_application/<saksnummer>:
+    get:
+      description: Get an application based on saksnummer. Returns the full application
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                "0":
+                  value: |
+                    "{'saksnummer': 928043964, 'status': 'Mottatt', 'identifikasjonsnummer': {'foedselsEllerDNummer': '03839199405', 'identifikatortype': 'foedselsnummer'}, 'navn': {'etternavn': 'IkkeAutoGenerert', 'fornavn': 'Ola', 'mellomnavn': None}, 'barn_barnehage': [{'barnets_navn': 'undefined undefined', 'fodselsnummer': '13371337133', 'navn_pa_barnehage': None, 'prosent_plass': None}], 'barn_SFO': [{'barnets_navn': 'ER ENDA IKKE GJORT AUTOMATISK', 'fodselsnummer': None, 'navn_pa_sfo': None, 'prosent_plass': None}], 'sivilstand': {'har_samboer': True, 'relatert_person': '23568945586', 'samboer_fra_dato': '2015-01-01'}, 'bostedsadresse': {'ukjentBosted': None, 'vegadresse': {'adressekode': '1048', 'adressenavn': 'Librotet', 'adressenummer': {'husbokstav': None, 'husnummer': '10'}, 'adressetilleggsnavn': None, 'bruksenhetsnummer': None, 'bruksenhetstype': None, 'coAdressenavn': None, 'kommunenummer': '4634', 'poststed': {'postnummer': '5984', 'poststedsnavn': 'MATREDAL'}}}, 'preferert_kontaktadresse': {'kontaktadresseIFrittFormat': {'adresselinje': ['L\u00f8setvegen', '6440 ELNESV\u00c5GEN', 'Norge'], 'landkode': None}, 'valg': 'postadresse'}, 'foedsel': {'foedselsaar': '1991', 'foedselsdato': '1991-03-03'}, 'postadresse': {'postadresseIFrittFormat': {'adresselinje': ['L\u00f8setvegen', '6440 ELNESV\u00c5GEN', 'Norge'], 'poststed': None}, 'postboksadresse': None, 'vegadresse': None}, 'samlet_inntekt': None, 'gratis_kjernetid': None, 'maks_aarlig_bhg_kostnad': None, 'flagg': {'varig_nedgang_samlet_inntekt': False, 'mistet_jobb': False, 'samlivsbrudd': False}, 'foreldreansvar': [{'ansvar': 'felles', 'ansvarlig': '03839199405', 'ansvarligUtenIdentifikator': None, 'ansvarssubjekt': '28881698678', 'ansvarssubjektUtenIdentifikator': None}], 'familierelasjon': [{'minRolleForPerson': 'mor', 'relatertPerson': '28881698678', 'relatertPersonsRolle': 'barn'}, {'minRolleForPerson': 'barn', 'relatertPerson': '02905999217', 'relatertPersonsRolle': 'mor'}, {'minRolleForPerson': 'barn', 'relatertPerson': '20895998126', 'relatertPersonsRolle': 'far'}, {'minRolleForPerson': 'ektefelleEllerPartner', 'relatertPerson': '21919298917', 'relatertPersonsRolle': 'ektefelleEllerPartner'}], 'requires_manual_processing': True, 'id': 'tAeay0temuyBgXafltwk1XnOq_jGkEG2sNwlhwTvKWU', '_rid': 's5FjAMdG60BTAAAAAAAAAA==', '_self': 'dbs/s5FjAA==/colls/s5FjAMdG60A=/docs/s5FjAMdG60BTAAAAAAAAAA==/', '_etag': '\"0000efd4-0000-3c00-0000-6110d3070000\"', '_attachments': 'attachments/', 'status_historikk': [{'seq': 0, 'date': '2021-08-04 10:50:13.425762', 'status': 'Mottatt'}, {'seq': 1, 'date': '2021-08-09 07:02:31.923279', 'status': 'Mottatt'}], '_ts': 1628492551}"
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /submit_application:
+    post:
+      description: Sends an application and saves it in the database. Can be retrieved using the /get_application/ route
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/submit_application_body'
+            examples:
+              "0":
+                value: "{\r\n            \"navn\": {\r\n                \"etternavn\": \"GÅTE\",\r\n                \"forkortetNavn\": \"GÅTE STERK ALKOVE\",\r\n                \"fornavn\": \"STERK\",\r\n                \"mellomnavn\": \"ALKOVE\"\r\n            },\r\n            \"identifikasjonsnummer\": \"03839199405\",\r\n            \"sivilstand\": {\r\n                \"har_samboer\": true,\r\n                \"relatert_person\": \"21919298917\",\r\n                \"samboer_fra_dato\": \"2015-01-01\"\r\n            },\r\n            \"opplysninger_om_barn_barnehage\": [\r\n                {\r\n                    \"barnets_navn\": \"ER ENDA IKKE GJORT AUTOMATISK\",\r\n                    \"fodselsnummer\": null,\r\n                    \"navn_pa_sfo\": null,\r\n                    \"prosent_plass\": null\r\n                }\r\n            ],\r\n            \"opplysninger_om_barn_SFO\": [\r\n                {\r\n                    \"barnets_navn\": \"ER ENDA IKKE GJORT AUTOMATISK\",\r\n                    \"fodselsnummer\": null,\r\n                    \"navn_pa_sfo\": null,\r\n                    \"prosent_plass\": null\r\n                }\r\n            ],\r\n            \"flagg\": {\r\n                \"varig_nedgang_samlet_inntekt\": false, \r\n                \"mistet_jobb\": false, \r\n                \"samlivsbrudd\": false\r\n            }\r\n        }"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+              examples:
+                "0":
+                  value: |
+                    {"saksnummer":"782591977"}
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /get_partner/<personidentifikator>:
+    get:
+      description: Gets the applicant's partner if they are registered in folkeregisteret.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+              examples:
+                "0":
+                  value: |
+                    {"identifikasjonsnummer":{"foedselsEllerDNummer":"21919298917","identifikatortype":"foedselsnummer"},"navn":{"etternavn":"SEPARASJON","forkortetNavn":"SEPARASJON PESSIMISTISK","fornavn":"PESSIMISTISK","mellomnavn":null}}
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /set_application_status/<personidentifikator>:
+    post:
+      description: Set a new status for the application. E.G change from "Mottatt" to "Til behandling"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/set_application_status_personidentifikator_body'
+            examples:
+              "0":
+                value: '{"status": "Mottatt"}'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                "0":
+                  value: |
+                    "Mottatt"
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+  /get_application_status/<saksnummer>:
+    get:
+      description: Returns the status of an application.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                "0":
+                  value: |
+                    "{\"status\":\"Mottatt\"}\n"
+      servers:
+      - url: http://51.107.208.107
+    servers:
+    - url: http://51.107.208.107
+components:
+  schemas:
+    inline_response_200:
+      type: object
+      properties:
+        bostedsadresse:
+          type: object
+          properties:
+            ukjentBosted: {}
+            vegadresse:
+              type: object
+              properties:
+                bruksenhetstype: {}
+                adressetilleggsnavn: {}
+                adressekode:
+                  type: string
+                bruksenhetsnummer: {}
+                kommunenummer:
+                  type: string
+                adressenummer:
+                  type: object
+                  properties:
+                    husbokstav: {}
+                    husnummer:
+                      type: string
+                poststed:
+                  type: object
+                  properties:
+                    postnummer:
+                      type: string
+                    poststedsnavn:
+                      type: string
+                adressenavn:
+                  type: string
+                coAdressenavn: {}
+        navn:
+          type: object
+          properties:
+            forkortetNavn:
+              type: string
+            etternavn:
+              type: string
+            mellomnavn:
+              type: string
+            fornavn:
+              type: string
+        sivilstand:
+          type: object
+          properties:
+            gyldighetstidspunkt:
+              type: string
+            sivilstandsdato:
+              type: string
+            sivilstand:
+              type: string
+    submit_application_flagg:
+      type: object
+      properties:
+        mistet_jobb:
+          type: boolean
+        varig_nedgang_samlet_inntekt:
+          type: boolean
+        samlivsbrudd:
+          type: boolean
+    submit_application_opplysninger_om_barn_barnehage:
+      type: object
+      properties:
+        navn_pa_sfo: {}
+        prosent_plass: {}
+        barnets_navn:
+          type: string
+        fodselsnummer: {}
+    submit_application_navn:
+      type: object
+      properties:
+        forkortetNavn:
+          type: string
+        etternavn:
+          type: string
+        mellomnavn:
+          type: string
+        fornavn:
+          type: string
+    submit_application_sivilstand:
+      type: object
+      properties:
+        samboer_fra_dato:
+          type: string
+        har_samboer:
+          type: boolean
+        relatert_person:
+          type: string
+    submit_application_body:
+      type: object
+      properties:
+        flagg:
+          $ref: '#/components/schemas/submit_application_flagg'
+        opplysninger_om_barn_barnehage:
+          type: array
+          items:
+            $ref: '#/components/schemas/submit_application_opplysninger_om_barn_barnehage'
+        identifikasjonsnummer:
+          type: string
+        navn:
+          $ref: '#/components/schemas/submit_application_navn'
+        opplysninger_om_barn_SFO:
+          type: array
+          items:
+            $ref: '#/components/schemas/submit_application_opplysninger_om_barn_barnehage'
+        sivilstand:
+          $ref: '#/components/schemas/submit_application_sivilstand'
+    inline_response_200_1:
+      type: object
+      properties:
+        saksnummer:
+          type: string
+    inline_response_200_2:
+      type: object
+      properties:
+        identifikasjonsnummer:
+          type: object
+          properties:
+            foedselsEllerDNummer:
+              type: string
+            identifikatortype:
+              type: string
+        navn:
+          type: object
+          properties:
+            forkortetNavn:
+              type: string
+            etternavn:
+              type: string
+            mellomnavn: {}
+            fornavn:
+              type: string
+    set_application_status_personidentifikator_body:
+      type: object
+      properties:
+        status:
+          type: string
