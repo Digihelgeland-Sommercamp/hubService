@@ -44,9 +44,7 @@ class SubmitApplication():
         self.application.samlet_inntekt = self.sum_bruttoinntekt(applicant_skattemelding, cohabitant_skattemelding)
         
         #spør evaluator
-        res = self.evaluate_income(self.application.samlet_inntekt)
-        self.application.gratis_kjernetid = res['freeHours']
-        self.application.maks_aarlig_bhg_kostnad = res['maxPay']
+        self.evaluate_income(self.application.samlet_inntekt)
 
         #lagre søknad
         respons = self.save_application()
@@ -75,7 +73,13 @@ class SubmitApplication():
         return res
 
     def evaluate_income(self, income):
-        return json.loads(self.contacter.evaluate_yearly_income(income))
+        for it in self.application.barn_barnehage:
+            birth = it["foedsel"]
+            personid = it["foedselsnummer"]
+            result = json.loads(self.contacter.evaluate_yearly_income(income, birth))
+            it["gratisKjernetid"] = result["freeHours"]
+            it["maks_aarlig_kostnad"] = result["maxPay"]
+
 
 
 

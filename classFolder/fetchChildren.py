@@ -45,6 +45,7 @@ class FetchChildren():
             child = {}
             child["navn"] = child_from_folkreg["navn"]
             child["foedsel"] = child_from_folkreg["foedsel"]["foedselsdato"]
+            child["foedselsnummer"] = child_from_folkreg["identifikasjonsnummer"]["foedselsEllerDNummer"]
             return child
         except Exception:
             return None

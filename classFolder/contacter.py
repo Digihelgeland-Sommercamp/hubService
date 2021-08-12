@@ -24,18 +24,11 @@ class Contacter():
             raise Exception('get_folkreg_data request response is not 200. Status code: ' + str(r.status_code) + ', Reason: ' + str(r.reason))
         return r.text
         
-    def evaluate_yearly_income(self, income):
+    def evaluate_yearly_income(self, income, birth_year):
         userId = token_urlsafe()
-        # data = {
-        #     "userId": userId,
-        #     "income": income,
-        #     "incomeType": "Skatt",
-        #     "monthlyIncome": [
-        #     ],
-        #     "household": [
-        #     ]
-        # }
-        r = requests.get(self.evaluatorserviceURL + "evaluate/"+userId+"/"+income, json=json.dumps(data))
+
+
+        r = requests.get(self.evaluatorserviceURL + "evaluate/"+userId+"/"+income+"/"+birth_year)
         if r.status_code != 200:
             raise Exception("Could not evaluate yearly income. Response: " + str(r))
 
