@@ -73,12 +73,12 @@ class SubmitApplication():
         return res
 
     def evaluate_income(self, income):
-        for it in self.application.barn_barnehage:
-            birth = it["foedsel"]
-            personid = it["foedselsnummer"]
+        for i in range(len(self.application.barn_barnehage)):
+            birth = self.application.barn_barnehage[i]["foedsel"]
+            personid = self.application.barn_barnehage[i]["foedselsnummer"]
             result = json.loads(self.contacter.evaluate_yearly_income(income, birth))
-            it["gratisKjernetid"] = result["freeHours"]
-            it["maks_aarlig_kostnad"] = result["maxPay"]
+            self.application.barn_barnehage[i]["gratisKjernetid"] = result["freeHours"]
+            self.application.barn_barnehage[i]["maks_aarlig_kostnad"] = result["maxPay"]
 
 
 
