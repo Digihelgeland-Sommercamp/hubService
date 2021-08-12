@@ -74,7 +74,7 @@ def set_application_status(saksnummer=None):
     res = set_application_status.set_application_status()
     return jsonify(res)
 
-#TODO: Add a filter for children returned, currently all children are returned
+
 @app.route("/get_children/<personidentifikator>")
 def get_children(personidentifikator):
     res = FetchChildren().get_related_children(personidentifikator)
@@ -82,7 +82,7 @@ def get_children(personidentifikator):
         raise BadRequest
     return jsonify(res)
 
-#TODO: route get partner til frontend
+
 @app.route("/get_partner/<personidentifikator>")
 def get_partner(personidentifikator):
     res = FetchPartner().get_partner(personidentifikator)

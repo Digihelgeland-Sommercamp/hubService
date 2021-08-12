@@ -53,7 +53,6 @@ class Application():
         return True
 
     #sjekker om vedkommende har samboer
-    #TODO Check if this is necessary for non-automatic applications.
     def has_cohabitant(self):
         if self.sivilstand['har_samboer']:
             dato = date.today().strftime("%Y-%m-%d")
@@ -100,15 +99,3 @@ class Application():
             "status_historikk": self.status_historikk,
             "vedlegg": self.vedlegg
         })
-
-#eksempelbruk av application-metoder
-if __name__ == '__main__':
-    f = open('application_example.json',)
-    application_data = json.load(f)
-    f.close()
-
-    app = Application(application_data)
-    app.is_ordinary()
-    print(app.export_as_json())
-    print(app.has_cohabitant())
-    print(app.get_cohabitant())

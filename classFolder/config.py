@@ -1,4 +1,3 @@
-# hostname_evaluatorservice="http://localhost"
 hostname_fregservice="http://fregservice-svc"
 hostname_skattservice="http://skatteservice-svc"
 hostname_evaluatorservice="http://evaluatorservice-svc"

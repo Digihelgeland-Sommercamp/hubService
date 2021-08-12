@@ -49,7 +49,7 @@ class SubmitApplication():
         #lagre søknad
         respons = self.save_application()
 
-        return respons #if successful operation
+        return respons
 
     def save_application(self):
         res = self.contacter.save_application(self.application.export_as_json())
@@ -79,17 +79,3 @@ class SubmitApplication():
             result = json.loads(self.contacter.evaluate_yearly_income(income, birth))
             it["gratisKjernetid"] = result["freeHours"]
             it["maks_aarlig_kostnad"] = result["maxPay"]
-
-
-
-
-
-
-# #eksempelbruk av submitapplication-metoder
-# if __name__ == '__main__':
-#     f = open('application_example.json',)
-#     application_data = json.load(f)
-#     f.close()
-
-#     app = SubmitApplication(application_data)
-#     print(app.handle_application())
