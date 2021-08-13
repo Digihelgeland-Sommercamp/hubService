@@ -64,7 +64,7 @@ class Application():
     #henter personidentifikator til samboer oppgitt i søknad
     def get_cohabitant(self):
         if self.sivilstand['har_samboer']:
-            return self.sivilstand['relatert_person']
+            return self.sivilstand['relatert_person']["foedselsEllerDNummer"]
         return False
 
     def get_idnummer(self):

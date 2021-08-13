@@ -20,6 +20,8 @@ class SubmitApplication():
             self.application.update_folkreg_data(folkreg_data)
         except Exception as e:
             res = self.aborted_save_application()
+            print("can't get folkreg data")
+            print(e)
             return res
 
         #hent søkers skattemelding
@@ -29,6 +31,8 @@ class SubmitApplication():
 
         except Exception as e:
             res = self.aborted_save_application()
+            print("can't get applicant skattemelding data")
+            print(e)
             return res
         
         #hent samboer sin skattemelding
@@ -36,7 +40,8 @@ class SubmitApplication():
         if self.application.has_cohabitant():
             try:
                 cohabitant_skattemelding = self.get_skattemelding("2019", self.application.get_cohabitant())
-            except Exception:
+            except Exception as e:
+                print("can't get cohabitant skattemelding data")
                 res = self.aborted_save_application()
                 return res
 
@@ -75,7 +80,6 @@ class SubmitApplication():
     def evaluate_income(self, income):
         for i in range(len(self.application.barn_barnehage)):
             birth = self.application.barn_barnehage[i]["foedsel"]
-            personid = self.application.barn_barnehage[i]["foedselsnummer"]
             result = json.loads(self.contacter.evaluate_yearly_income(income, birth))
             self.application.barn_barnehage[i]["gratisKjernetid"] = result["freeHours"]
             self.application.barn_barnehage[i]["maks_aarlig_kostnad"] = result["maxPay"]

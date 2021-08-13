@@ -27,8 +27,7 @@ class Contacter():
     def evaluate_yearly_income(self, income, birth_year):
         userId = token_urlsafe()
 
-
-        r = requests.get(self.evaluatorserviceURL + "evaluate/"+userId+"/"+income+"/"+birth_year)
+        r = requests.get(self.evaluatorserviceURL + "evaluate/"+userId+"/"+str(income)+"/"+str(birth_year))
         if r.status_code != 200:
             raise Exception("Could not evaluate yearly income. Response: " + str(r))
 
