@@ -13,7 +13,6 @@ Every route can be found in [app.py](https://github.com/Digihelgeland-Sommercamp
 Each route below links to the OpenAPI specification on swaggerhub.
 
 * [POST] [/submit_application](https://app.swaggerhub.com/apis/Johannes-s-b/Hubservice/0.1)
-  * Returns the "saksnummer" of the application
 * [POST] [/add_attachment](https://app.swaggerhub.com/apis/Johannes-s-b/Hubservice/0.1)
 * [GET] [/get_application/\<saksnummer>](https://app.swaggerhub.com/apis/Johannes-s-b/Hubservice/0.1)
 * [GET] [/get_all_applications/\<personidentifikator>](https://app.swaggerhub.com/apis/Johannes-s-b/Hubservice/0.1)
